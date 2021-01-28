@@ -76,10 +76,8 @@ class Main:
         )
         if (status := report.status_code) == 201:
             self.sent += 1
-            print(Fore.CYAN + 'Report sent successfully!'+ Fore.RESET)
         elif status in (401, 403):
             self.errors += 1
-            print(self.RESPONSES[report.json()['message']])
         else:
             self.errors += 1
             print(f'[!] Error: {report.text} | Status Code: {status}')
@@ -87,7 +85,10 @@ class Main:
     def _update_title(self):
         while True:
             os.system(f'title discord reporter successful: {self.sent} ^- errors: {self.errors}')
+            print(f"{Fore.CYAN}Reports sent: {self.sent}{Fore.RESET}")
+            print(f"{Fore.CYAN}Errors: {self.errors}{Fore.RESET}")
             time.sleep(0.1)
+            os.system("cls")
 
     def _multi_threading(self):
         threading.Thread(target=self._update_title).start()
