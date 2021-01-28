@@ -1,4 +1,4 @@
-#discord report bot
+discord report bot
 
 so this does work, but only if they have actually broken discord tos in their message
 
